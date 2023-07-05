@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Poppins:wght@500&display=swap");
+
+:root {
+  --firstFont: "Lato", sans-serif;
+  --secondFont: "Poppins", sans-serif;
+  /** sunny side **/
+  --blue-background: #c2e9f6;
+  --blue-border: #72cce3;
+  --blue-color: #96dcee;
+  --yellow-background: #fffaa8;
+  --yellow-border: #f5eb71;
+  /** dark side **/
+  --indigo-background: #808fc7;
+  --indigo-border: #5d6baa;
+  --indigo-color: #6b7abb;
+  --gray-border: #e8e8ea;
+  --gray-dots: #e8e8ea;
+  /** general **/
+  --white: #fff;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+#root {
+  height: 100%;
+}
