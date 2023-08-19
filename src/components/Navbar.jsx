@@ -7,16 +7,13 @@ import {
   AiFillSetting,
 } from "react-icons/ai";
 import { RxTriangleUp, RxMoon, RxSun } from "react-icons/rx";
-
 import { motion } from "framer-motion";
+
 const Navbar = ({ mode, setMode }) => {
   const [accountBarToggle, setAccountBarToggle] = useState(false);
   const wrapperRef = useRef(null);
   const iconRef = useRef(null);
   useEffect(() => {
-    /**
-     * Alert if clicked on outside of element
-     */
     function handleClickOutside(event) {
       if (
         wrapperRef.current &&
@@ -27,10 +24,9 @@ const Navbar = ({ mode, setMode }) => {
         setAccountBarToggle(accountBarToggle);
       }
     }
-    // Bind the event listener
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [wrapperRef, iconRef]);
@@ -77,7 +73,6 @@ const Navbar = ({ mode, setMode }) => {
         <div>
           <a href="">Ücretlendirme</a>
         </div>
-
         <div>
           <div
             className={styles.modeChanger}

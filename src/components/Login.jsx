@@ -37,7 +37,6 @@ const Login = ({ mode }) => {
           validationSchema={schema}
           initialValues={{ username: "", password: "" }}
           onSubmit={(values) => {
-            // Alert the input values of the form that we filled
             alert(JSON.stringify(values));
           }}
         >
@@ -52,12 +51,9 @@ const Login = ({ mode }) => {
             <div className={styles.formContainer}>
               <h1>Giriş Yap</h1>
               <div className={styles.form}>
-                {/* Passing handleSubmit parameter tohtml form onSubmit property */}
                 <form noValidate onSubmit={handleSubmit}>
                   <label htmlFor="username">
                     <AiOutlineUser />
-
-                    {/* Our input html with passing formik parameters like handleChange, values, handleBlur to input properties */}
                     <input
                       type="text"
                       name="username"
@@ -68,13 +64,11 @@ const Login = ({ mode }) => {
                       id="username"
                     />
                   </label>
-                  {/* If validation is not passed show errors */}
                   <p className={styles.error}>
                     {touched.username && errors.username}
                   </p>
                   <label htmlFor="password">
                     <AiOutlineKey />
-                    {/* Our input html with passing formik parameters like handleChange, values, handleBlur to input properties */}
                     <input
                       type={passwordToggle ? "text" : "password"}
                       name="password"
@@ -100,11 +94,9 @@ const Login = ({ mode }) => {
                       />
                     )}
                   </label>
-                  {/* If validation is not passed show errors */}
                   <p className={styles.error}>
                     {touched.password && errors.password}
                   </p>
-                  {/* Click on submit button to submit the form */}
                   <button type="submit">Login</button>
                 </form>
               </div>
