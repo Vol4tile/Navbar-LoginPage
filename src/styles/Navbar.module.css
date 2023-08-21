@@ -153,7 +153,19 @@
 .accountMenus {
   cursor: pointer;
 }
-
+.light .burgerMenu{
+  color: black;
+}
+.dark .burgerMenu{
+  color: white;
+}
+.burgerMenu {
+ 
+  height: 50px;
+  width: 50px;
+  display: none;
+  cursor: pointer;
+}
 @media only screen and (max-width: 1200px) {
   .navbar {
     width: 100%;
@@ -162,16 +174,18 @@
   .navbar .searchBar {
     display: none;
   }
-  .nav {
-    flex-basis: auto;
-
-    flex-grow: 1;
-  }
 }
 
 @media only screen and (max-width: 1000px) {
   .navbar {
-    max-width: 100%;
+    height: auto;
+    flex-direction: column;
+ 
+  }
+  .nav{
+    height: auto;
+    flex-direction: column;
+    gap: 0;
   }
 
   .navbar .searchBar {
@@ -180,34 +194,11 @@
   .logo {
     flex-basis: auto;
   }
-  .nav {
-    flex-basis: auto;
-
-    flex-grow: 1;
+  
+  .burgerMenu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
-@media only screen and (max-width: 700px) {
-  .navbar {
-    max-width: 100%;
-    font-size: 14px;
-    flex-direction: column;
-    height: auto;
-    gap: 5px;
-  }
-
-  .navbar .searchBar {
-    display: none;
-  }
-  .logo {
-    flex-basis: auto;
-  }
-  .nav {
-    flex-direction: column;
-    flex-basis: auto;
-    gap: 5px;
-    height: auto;
-    font-size: 18px;
-    flex-grow: 1;
-  }
-}

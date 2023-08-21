@@ -5,12 +5,16 @@ import {
   AiOutlineUser,
   AiOutlineLogout,
   AiFillSetting,
+  AiOutlineArrowDown,
+  AiOutlineArrowUp,
 } from "react-icons/ai";
+import { CiMenuBurger } from "react-icons/ci";
 import { RxTriangleUp, RxMoon, RxSun } from "react-icons/rx";
 import { motion } from "framer-motion";
 
 const Navbar = ({ mode, setMode }) => {
   const [accountBarToggle, setAccountBarToggle] = useState(false);
+  const [navToggle, setNavToggle] = useState(true);
   const wrapperRef = useRef(null);
   const iconRef = useRef(null);
   useEffect(() => {
@@ -31,6 +35,17 @@ const Navbar = ({ mode, setMode }) => {
     };
   }, [wrapperRef, iconRef]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setNavToggle(window.innerWidth > 1000);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   const parentVarent = {
     show: {
       height: "120px",
@@ -63,96 +78,106 @@ const Navbar = ({ mode, setMode }) => {
           />
         </label>
       </div>
-      <nav className={styles.nav}>
-        <div>
-          <a href="">Keşfet</a>
-        </div>
-        <div>
-          <a href="">Hakkımızda</a>
-        </div>
-        <div>
-          <a href="">Ücretlendirme</a>
-        </div>
-        <div>
-          <div
-            className={styles.modeChanger}
-            onClick={() => {
-              if (mode === "light") {
-                setMode("dark");
-              } else {
-                setMode("light");
-              }
-            }}
-          >
-            {mode === "dark" ? <RxSun></RxSun> : <RxMoon></RxMoon>}
+      {navToggle && (
+        <nav className={styles.nav}>
+          <div>
+            <a href="">Keşfet</a>
           </div>
-        </div>
-        <div className={styles.account} ref={iconRef}>
-          <AiOutlineUser
-            style={{ fontSize: "24px" }}
-            onClick={() => {
-              setAccountBarToggle(!accountBarToggle);
-            }}
-          ></AiOutlineUser>
-          <motion.div
-            {...(accountBarToggle && {
-              animate: "show",
-              variants: parentVarent,
-              initial: "hide",
-            })}
-            ref={wrapperRef}
-            className={styles.accountNav}
-            style={{ display: accountBarToggle ? "block" : "none" }}
-          >
-            {accountBarToggle && (
-              <>
-                <RxTriangleUp className={styles.triangle}></RxTriangleUp>
+          <div>
+            <a href="">Hakkımızda</a>
+          </div>
+          <div>
+            <a href="">Ücretlendirme</a>
+          </div>
+          <div>
+            <div
+              className={styles.modeChanger}
+              onClick={() => {
+                if (mode === "light") {
+                  setMode("dark");
+                } else {
+                  setMode("light");
+                }
+              }}
+            >
+              {mode === "dark" ? <RxSun></RxSun> : <RxMoon></RxMoon>}
+            </div>
+          </div>
+          <div className={styles.account} ref={iconRef}>
+            <AiOutlineUser
+              style={{ fontSize: "24px" }}
+              onClick={() => {
+                setAccountBarToggle(!accountBarToggle);
+              }}
+            ></AiOutlineUser>
+            <motion.div
+              {...(accountBarToggle && {
+                animate: "show",
+                variants: parentVarent,
+                initial: "hide",
+              })}
+              ref={wrapperRef}
+              className={styles.accountNav}
+              style={{ display: accountBarToggle ? "block" : "none" }}
+            >
+              {accountBarToggle && (
+                <>
+                  <RxTriangleUp className={styles.triangle}></RxTriangleUp>
 
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  {" "}
-                  <a href="">
-                    <label className={styles.accountMenus}>
-                      <AiOutlineUser></AiOutlineUser>
-                      Hesabım
-                    </label>
-                  </a>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1 }}
-                >
-                  <a href="">
-                    <label className={styles.accountMenus}>
-                      <AiFillSetting></AiFillSetting>
-                      Ayarlar
-                    </label>
-                  </a>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1.5 }}
-                >
-                  <a href="">
-                    <label className={styles.accountMenus}>
-                      <AiOutlineLogout></AiOutlineLogout>
-                      Çıkış Yap
-                    </label>
-                  </a>
-                </motion.div>
-              </>
-            )}
-          </motion.div>
-        </div>
-        <div>
-          <a href="">Paylaş</a>
-        </div>
-      </nav>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {" "}
+                    <a href="">
+                      <label className={styles.accountMenus}>
+                        <AiOutlineUser></AiOutlineUser>
+                        Hesabım
+                      </label>
+                    </a>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1 }}
+                  >
+                    <a href="">
+                      <label className={styles.accountMenus}>
+                        <AiFillSetting></AiFillSetting>
+                        Ayarlar
+                      </label>
+                    </a>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1.5 }}
+                  >
+                    <a href="">
+                      <label className={styles.accountMenus}>
+                        <AiOutlineLogout></AiOutlineLogout>
+                        Çıkış Yap
+                      </label>
+                    </a>
+                  </motion.div>
+                </>
+              )}
+            </motion.div>
+          </div>
+          <div>
+            <a href="">Paylaş</a>
+          </div>
+        </nav>
+      )}
+      <div
+        className={styles.burgerMenu}
+        onClick={() => {
+          setNavToggle((state) => !state);
+        }}
+      >
+        {navToggle ? <AiOutlineArrowUp /> : <AiOutlineArrowDown />}
+      </div>
     </header>
   );
 };
