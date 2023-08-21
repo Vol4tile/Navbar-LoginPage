@@ -163,13 +163,12 @@
 }
 @media only screen and (max-width: 800px) {
   .container {
-    width: 90%;
+    width: 100%;
   }
   .container video {
     top: -20%;
     left: 0%;
     height: 100%;
-
     width: 100%;
   }
 }
@@ -178,7 +177,7 @@
     display: none;
   }
   .container {
-    width: 80%;
+    width: 100%;
   }
   .formContainer {
     flex-basis: 100%;
